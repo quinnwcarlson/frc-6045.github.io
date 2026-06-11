@@ -1,0 +1,371 @@
+/* ============================================================
+   FRC 6045 — Sabre Robotics Programming Site
+   "Pit Board" design system
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Saira+Stencil+One&family=Saira:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+:root {
+  --navy:        #1A4A91;   /* Sabre royal blue — sampled from team logo */
+  --navy-deep:   #11305F;
+  --black:       #0E1013;   /* logo gear black */
+  --paper:       #F4F6FA;
+  --card:        #FFFFFF;
+  --ink:         #14161C;
+  --ink-soft:    #4B5163;
+  --sabre:       #7FA3DE;   /* light Sabre blue */
+  --sabre-dim:   #DDE7F7;
+  --go:          #16B364;   /* Driver Station green */
+  --stop:        #E5484D;   /* Driver Station red */
+  --line:        #D8DDEA;
+
+  --display: 'Saira Stencil One', sans-serif;
+  --heading: 'Saira', sans-serif;
+  --body:    'IBM Plex Sans', sans-serif;
+  --mono:    'IBM Plex Mono', monospace;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation: none !important; transition: none !important; }
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+/* ---------- Announcement bar ---------- */
+.announce {
+  background: var(--black);
+  color: #fff;
+  text-align: center;
+  font-family: var(--heading);
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  padding: 0.4rem 1rem;
+}
+.announce .gold { color: #F5C84C; }
+
+/* ---------- Top navigation ---------- */
+.topnav {
+  background: var(--navy);
+  color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  border-bottom: 3px solid var(--sabre);
+}
+.topnav-inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0.6rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: #fff;
+  text-decoration: none;
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: 1.0rem;
+  letter-spacing: 0.06em;
+}
+.brand img { width: 30px; height: 30px; }
+.brand .team-num { color: var(--sabre); }
+.topnav nav {
+  margin-left: auto;
+  display: flex;
+  gap: 0.25rem;
+  flex-wrap: wrap;
+}
+.topnav nav a {
+  color: #DCE5F6;
+  text-decoration: none;
+  font-family: var(--heading);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.4rem 0.65rem;
+  border-radius: 6px;
+}
+.topnav nav a:hover,
+.topnav nav a:focus-visible { background: rgba(143,163,232,0.22); color: #fff; }
+a:focus-visible { outline: 2px solid var(--sabre); outline-offset: 2px; }
+
+/* ---------- Hero ---------- */
+.hero {
+  background:
+    linear-gradient(160deg, var(--navy) 0%, var(--navy-deep) 75%);
+  color: #fff;
+  padding: 3.2rem 1.25rem 2.6rem;
+}
+.hero-inner { max-width: 1080px; margin: 0 auto; }
+.hero h1 {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(1.8rem, 4.5vw, 2.9rem);
+  line-height: 1.12;
+  margin: 0 0 0.6rem;
+  letter-spacing: 0.01em;
+}
+.hero h1 .accent { color: var(--sabre); }
+.hero p.lede {
+  max-width: 56ch;
+  color: #C8CEEC;
+  margin: 0 0 1.6rem;
+  font-size: 1.05rem;
+}
+
+/* Signature: Driver Station telemetry strip */
+.ds-strip {
+  display: inline-flex;
+  gap: 0;
+  border: 1px solid rgba(143,163,232,0.45);
+  border-radius: 8px;
+  overflow: hidden;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.05em;
+}
+.ds-strip span {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.45rem 0.9rem;
+  background: rgba(255,255,255,0.04);
+}
+.ds-strip span + span { border-left: 1px solid rgba(143,163,232,0.35); }
+.led {
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  background: var(--go);
+  box-shadow: 0 0 7px var(--go);
+}
+
+/* ---------- Layout ---------- */
+main { max-width: 1080px; margin: 0 auto; padding: 1.5rem 1.25rem 4rem; }
+
+section { margin-top: 2.8rem; }
+.sec-label {
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-bottom: 0.35rem;
+}
+.sec-label::before {
+  content: "";
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  background: var(--go);
+}
+h2 {
+  font-family: var(--heading);
+  font-weight: 700;
+  font-size: 1.55rem;
+  margin: 0 0 1.1rem;
+  color: var(--navy);
+}
+h3 {
+  font-family: var(--heading);
+  font-weight: 600;
+  font-size: 1.05rem;
+  margin: 0 0 0.35rem;
+  color: var(--navy);
+}
+
+/* ---------- Cards ---------- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 0.9rem;
+}
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 1.1rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+.card p { margin: 0; color: var(--ink-soft); font-size: 0.93rem; }
+.card .note {
+  font-size: 0.85rem;
+  border-left: 3px solid var(--sabre);
+  background: var(--sabre-dim);
+  padding: 0.45rem 0.65rem;
+  border-radius: 0 6px 6px 0;
+  color: var(--ink);
+}
+.card .links { margin-top: auto; padding-top: 0.55rem; display: flex; flex-wrap: wrap; gap: 0.45rem; }
+
+/* Link list cards (guide directory) */
+a.tile {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0.85rem 1.05rem;
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: 500;
+}
+a.tile:hover, a.tile:focus-visible {
+  border-color: var(--navy);
+  color: var(--navy);
+}
+a.tile::before {
+  content: "▸";
+  color: var(--sabre);
+  font-size: 1rem;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-block;
+  font-family: var(--heading);
+  font-weight: 600;
+  font-size: 0.84rem;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+  padding: 0.42rem 0.85rem;
+  border-radius: 7px;
+  border: 1px solid var(--navy);
+  color: var(--navy);
+  background: transparent;
+}
+.btn:hover, .btn:focus-visible { background: var(--navy); color: #fff; }
+.btn.solid { background: var(--navy); color: #fff; }
+.btn.solid:hover, .btn.solid:focus-visible { background: var(--navy-deep); }
+
+/* ---------- Guide pages ---------- */
+.crumb {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  margin: 1.4rem 0 0.4rem;
+}
+.crumb a { color: var(--ink-soft); text-decoration: none; }
+.crumb a:hover { color: var(--navy); text-decoration: underline; }
+.guide h1 {
+  font-family: var(--heading);
+  font-weight: 700;
+  font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+  color: var(--navy);
+  margin: 0 0 1.2rem;
+}
+.guide img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  margin: 0.6rem 0 1.1rem;
+  display: block;
+}
+.guide ol, .guide ul { padding-left: 1.3rem; }
+.guide li { margin-bottom: 0.55rem; }
+code, .mono {
+  font-family: var(--mono);
+  font-size: 0.88em;
+  background: #E9EBF7;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  padding: 0.1em 0.4em;
+}
+.callout {
+  border-left: 3px solid var(--sabre);
+  background: var(--sabre-dim);
+  border-radius: 0 8px 8px 0;
+  padding: 0.7rem 0.95rem;
+  margin: 1rem 0;
+  font-size: 0.93rem;
+}
+.callout.warn { border-left-color: var(--stop); background: #FCE9EA; }
+.callout.ok   { border-left-color: var(--go);   background: #E4F6EC; }
+
+/* ---------- Footer ---------- */
+footer {
+  background: var(--black);
+  color: #C9D2E4;
+  margin-top: 3rem;
+  padding: 1.6rem 1.25rem;
+  font-size: 0.88rem;
+}
+.footer-inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+}
+footer a { color: var(--sabre); }
+.socials { display: flex; gap: 0.8rem; align-items: center; }
+.socials a {
+  font-family: var(--heading); font-weight: 600; font-size: 0.85rem;
+  text-decoration: none; border: 1px solid #3A4150; border-radius: 6px;
+  padding: 0.3rem 0.7rem; color: #fff;
+}
+.socials a:hover, .socials a:focus-visible { border-color: var(--sabre); color: var(--sabre); }
+
+/* ---------- Collapsible problems (details/summary) ---------- */
+details {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  margin: 0.6rem 0;
+  overflow: hidden;
+}
+details summary {
+  cursor: pointer;
+  font-family: var(--heading);
+  font-weight: 600;
+  color: var(--navy);
+  padding: 0.8rem 1rem;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+details summary::before {
+  content: "▸";
+  color: var(--sabre);
+  transition: transform 0.15s ease;
+}
+details[open] summary::before { transform: rotate(90deg); }
+details summary:hover { background: var(--sabre-dim); }
+details > p, details > div {
+  margin: 0;
+  padding: 0.2rem 1rem 0.95rem 2.3rem;
+  color: var(--ink-soft);
+}
+
+/* ---------- Embedded forms ---------- */
+iframe {
+  max-width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fff;
+}
