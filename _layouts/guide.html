@@ -1,0 +1,11 @@
+---
+layout: default
+---
+<main class="guide">
+  <p class="crumb"><a href="index.html">Home</a>{% if page.category == "guide" %} / <a href="index.html#guides">How-To Guides</a>{% elsif page.category == "auto" %} / <a href="index.html#autos">Autos</a>{% endif %} / {{ page.title }}</p>
+  <h1>{{ page.title }}</h1>
+
+{{ content }}
+
+  <p><a class="btn" href="index.html">← Back to home page</a></p>
+</main>

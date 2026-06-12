@@ -1,0 +1,21 @@
+title: FRC 6045 — Sabre Robotics
+description: Programming documentation for FRC Team 6045 Sabre Robotics
+markdown: kramdown
+
+collections:
+  guides:
+    output: true
+    permalink: /:title.html
+  autos:
+    output: true
+    permalink: /:title.html
+  problems:
+    output: false
+
+defaults:
+  - scope: { type: guides }
+    values: { layout: guide, category: guide }
+  - scope: { type: autos }
+    values: { layout: guide, category: auto }
+
+exclude: [README.md]

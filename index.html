@@ -1,37 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<title>FRC 6045 Programming — Sabre Robotics</title>
-<link rel="icon" type="image/x-icon" href="Sabre_Robotics_Logo.png">
-<meta name="google-site-verification" content="iCy5zvQnHNrWSUoxNj9s4O0pKCrNPCoe6M28Tq6slz8" />
-<meta name="google-site-verification" content="Ku0xYph48LE6fogAOzn5VpxLDXBz7Z4tVOGe3p0wzCk" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="description" content="Programming documentation, how-to guides, and resources for FRC Team 6045 — Sabre Robotics, Sartell High School.">
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-<div class="announce">🏆 Home of your <span class="gold">2026 State Champs!</span></div>
-
-<header class="topnav">
-  <div class="topnav-inner">
-    <a class="brand" href="index.html">
-      <img src="Sabre_Robotics_Logo.png" alt="Sabre Robotics logo">
-      <span><span class="team-num">6045</span> PROGRAMMING</span>
-    </a>
-    <nav>
-      <a href="#setup">Setup</a>
-      <a href="#guides">Guides</a>
-      <a href="#autos">Autos</a>
-      <a href="#problems">Problems</a>
-      <a href="#repos">Repos</a>
-      <a href="contactform.html">Contact</a>
-      <a href="https://frc6045.com" target="_blank" rel="noopener" style="border-left:1px solid rgba(255,255,255,0.25);">Team Site ↗</a>
-    </nav>
-  </div>
-</header>
-
+---
+layout: default
+title: Home
+permalink: /index.html
+---
 <div class="hero">
   <div class="hero-inner">
     <h1>Sabre Robotics<br><span class="accent">Programming Docs</span></h1>
@@ -46,101 +17,43 @@
 
 <main>
 
-<!-- ============ SETUP ============ -->
 <section id="setup">
   <div class="sec-label">Step 1 · Get your computer ready</div>
   <h2>Download Important Applications</h2>
   <div class="grid">
-
+    {% for app in site.data.downloads %}
     <div class="card">
-      <h3>WPILib VS Code</h3>
-      <p>The software 6045 uses to edit and deploy robot code.</p>
-      <div class="note">Sartell school MacBook: install JDK and Xcode first (both on Self Service). Xcode needs administrator credentials.</div>
-      <div class="links"><a class="btn solid" href="https://docs.wpilib.org/en/stable/docs/zero-to-robot/step-2/wpilib-setup.html" target="_blank" rel="noopener">Download</a></div>
-    </div>
-
-    <div class="card">
-      <h3>Elastic</h3>
-      <p>Monitors robot status — speed, Limelight view, and encoder position. Also used to <a href="howtoselectautos.html">select autos</a>.</p>
-      <div class="links"><a class="btn" href="howtoopenelastic.html">Open it from WPILib VS Code</a></div>
-    </div>
-
-    <div class="card">
-      <h3>GitHub Desktop</h3>
-      <p>How 6045 accesses code across multiple computers. Not available for Linux.</p>
+      <h3>{{ app.name }}</h3>
+      <p>{{ app.description }}</p>
+      {% if app.note %}<div class="note">{{ app.note }}</div>{% endif %}
       <div class="links">
-        <a class="btn solid" href="https://desktop.github.com/download" target="_blank" rel="noopener">Download</a>
-        <a class="btn" href="versioncontrolwithgitgithub.html">Why we use it</a>
+        {% for l in app.links %}<a class="btn{% if l.style == 'solid' %} solid{% endif %}" href="{{ l.url }}"{% if l.url contains 'http' %} target="_blank" rel="noopener"{% endif %}>{{ l.label }}</a>{% endfor %}
       </div>
     </div>
-
-    <div class="card">
-      <h3>FRC Game Tools</h3>
-      <p>National Instruments' package including the Driver Station — necessary to control the robot. Windows only.</p>
-      <div class="links"><a class="btn solid" href="https://www.ni.com/en/support/downloads/drivers/download.frc-game-tools.html" target="_blank" rel="noopener">Download</a></div>
-    </div>
-
-    <div class="card">
-      <h3>REV Hardware Client</h3>
-      <p>What 6045 uses to assign CAN IDs to motors.</p>
-      <div class="note">As of February 2026, this can't run on Sartell school MacBooks — their OS is not recent enough.</div>
-      <div class="links"><a class="btn solid" href="https://rhc2.revrobotics.com/download/download.html" target="_blank" rel="noopener">Download</a></div>
-    </div>
-
-    <div class="card">
-      <h3>PathPlanner</h3>
-      <p>The software 6045 uses to make autos. Click the heading with the green "Latest" tag, then scroll down and pick the file matching your OS.</p>
-      <div class="note">School MacBook: install the ZIP, then run <code>xattr -d com.apple.quarantine file_path</code> in the terminal. Drag the installer into the terminal to get its path fast.</div>
-      <div class="links"><a class="btn solid" href="https://github.com/mjansen4857/pathplanner/releases" target="_blank" rel="noopener">Download</a></div>
-    </div>
-
-    <div class="card">
-      <h3>iTerm2 <span style="font-weight:400;color:var(--ink-soft);font-size:0.8rem;">(Mac only)</span></h3>
-      <p>A replacement terminal for Apple computers. Only needed on Sartell school MacBooks, where the regular Terminal app can't be opened.</p>
-      <div class="links"><a class="btn solid" href="https://iterm2.com/index.html" target="_blank" rel="noopener">Download</a></div>
-    </div>
-
-    <div class="card">
-      <h3>Moving apps on a school Mac</h3>
-      <p>On a Sartell school MacBook, move installed applications into the Applications folder using this process.</p>
-      <div class="links"><a class="btn" href="howtomoveitemstoapplications.html">How to do it</a></div>
-    </div>
-
+    {% endfor %}
   </div>
 </section>
 
-<!-- ============ GUIDES ============ -->
 <section id="guides">
   <div class="sec-label">Step 2 · Do the thing</div>
   <h2>How-To Guides</h2>
   <div class="grid">
-    <a class="tile" href="howtoconfigurearadio.html">Configure a radio</a>
-    <a class="tile" href="howtoconnecttotherobot.html">Connect to the robot</a>
-    <a class="tile" href="howtoconnectcontrollers.html">Connect controllers</a>
-    <a class="tile" href="howtodeploycode.html">Deploy code</a>
-    <a class="tile" href="howtomakeanewauto.html">Make a new auto</a>
-    <a class="tile" href="howtoselectautos.html">Select autos</a>
-    <a class="tile" href="howtotestmotors.html">Test motors</a>
-    <a class="tile" href="howtoupdatemotors.html">Update motors</a>
-    <a class="tile" href="howtoopenelastic.html">Open Elastic</a>
-    <a class="tile" href="howtomoveitemstoapplications.html">Move items to Applications (Mac)</a>
-    <a class="tile" href="howtonavigatefilesinterminal.html">Navigate files in Terminal (Mac)</a>
-    <a class="tile" href="technicianchecklist.html">Technician checklist</a>
+    {% assign guides = site.guides | sort: "order" %}
+    {% for g in guides %}<a class="tile" href="{{ g.url | remove_first: '/' }}">{{ g.title }}</a>
+    {% endfor %}
   </div>
 </section>
 
-<!-- ============ AUTOS ============ -->
 <section id="autos">
   <div class="sec-label">Autonomous</div>
   <h2>6045 Autos</h2>
   <div class="grid">
-    <a class="tile" href="6045autos.html">6045 autos — overview</a>
-    <a class="tile" href="howtomakeanewauto.html">Make a new auto</a>
-    <a class="tile" href="howtoselectautos.html">Select autos in Elastic</a>
+    {% assign autos = site.autos | sort: "order" %}
+    {% for a in autos %}<a class="tile" href="{{ a.url | remove_first: '/' }}">{{ a.title }}</a>
+    {% endfor %}
   </div>
 </section>
 
-<!-- ============ INFO ============ -->
 <section id="info">
   <div class="sec-label">Reference</div>
   <h2>Informational Pages</h2>
@@ -150,38 +63,25 @@
   </div>
 </section>
 
-<!-- ============ PROBLEMS ============ -->
 <section id="problems">
   <div class="sec-label">Lessons learned</div>
   <h2>Documented Problems</h2>
   <p style="max-width:65ch;color:var(--ink-soft);">We've experienced these problems with our robot and struggled to fix them, so we're writing them down for future reference — and in case they're useful for other teams.</p>
-  <a class="btn solid" href="documentedproblems.html">View documented problems</a>
+  {% for p in site.problems %}
+  <details>
+    <summary>{{ p.title }}</summary>
+    <div>{{ p.content }}</div>
+  </details>
+  {% endfor %}
 </section>
 
-<!-- ============ REPOS ============ -->
 <section id="repos">
   <div class="sec-label">Code</div>
   <h2>GitHub Repositories</h2>
   <div class="grid">
-    <a class="tile" href="https://github.com/frc-6045/2026-naan-REALEST" target="_blank" rel="noopener">6045 — 2026 robot code</a>
-    <a class="tile" href="https://github.com/frc-6045/FRC-Everybot-2026-Code" target="_blank" rel="noopener">6244 — 2026 robot code</a>
-    <a class="tile" href="https://github.com/frc-6045/frc-6045.github.io" target="_blank" rel="noopener">This website</a>
+    {% for r in site.data.repos %}<a class="tile" href="{{ r.url }}" target="_blank" rel="noopener">{{ r.label }}</a>
+    {% endfor %}
   </div>
 </section>
 
 </main>
-
-<footer>
-  <div class="footer-inner">
-    <span>FRC Team 6045 · Sabre Robotics · Sartell High School<br>
-    <a href="mailto:sabrerobotics6045@gmail.com">sabrerobotics6045@gmail.com</a> · <a href="https://frc6045.com" target="_blank" rel="noopener">frc6045.com</a> · <a href="contactform.html">Contact form</a></span>
-    <span class="socials">
-      <a href="https://www.facebook.com/SabreRobotics/" target="_blank" rel="noopener">Facebook</a>
-      <a href="https://www.tiktok.com/@frc6045" target="_blank" rel="noopener">TikTok</a>
-      <a href="https://www.instagram.com/6045_sabre_robotics/" target="_blank" rel="noopener">Instagram</a>
-    </span>
-  </div>
-</footer>
-
-</body>
-</html>

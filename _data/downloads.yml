@@ -1,0 +1,51 @@
+- name: WPILib VS Code
+  description: The software 6045 uses to edit and deploy robot code.
+  note: "Sartell school MacBook: install JDK and Xcode first (both on Self Service). Xcode needs administrator credentials."
+  links:
+    - label: Download
+      url: https://docs.wpilib.org/en/stable/docs/zero-to-robot/step-2/wpilib-setup.html
+      style: solid
+- name: Elastic
+  description: Monitors robot status — speed, Limelight view, and encoder position. Also used to select autos.
+  links:
+    - label: Open it from WPILib VS Code
+      url: howtoopenelastic.html
+- name: GitHub Desktop
+  description: How 6045 accesses code across multiple computers. Not available for Linux.
+  links:
+    - label: Download
+      url: https://desktop.github.com/download
+      style: solid
+    - label: Why we use it
+      url: versioncontrolwithgitgithub.html
+- name: FRC Game Tools
+  description: National Instruments' package including the Driver Station — necessary to control the robot. Windows only.
+  links:
+    - label: Download
+      url: https://www.ni.com/en/support/downloads/drivers/download.frc-game-tools.html
+      style: solid
+- name: REV Hardware Client
+  description: What 6045 uses to assign CAN IDs to motors.
+  note: "As of February 2026, this can't run on Sartell school MacBooks — their OS is not recent enough."
+  links:
+    - label: Download
+      url: https://rhc2.revrobotics.com/download/download.html
+      style: solid
+- name: PathPlanner
+  description: The software 6045 uses to make autos. Click the heading with the green "Latest" tag, then pick the file matching your OS.
+  note: "School MacBook: install the ZIP, then run xattr -d com.apple.quarantine file_path in the terminal."
+  links:
+    - label: Download
+      url: https://github.com/mjansen4857/pathplanner/releases
+      style: solid
+- name: iTerm2 (Mac only)
+  description: A replacement terminal for Apple computers. Only needed on Sartell school MacBooks, where the regular Terminal app can't be opened.
+  links:
+    - label: Download
+      url: https://iterm2.com/index.html
+      style: solid
+- name: Moving apps on a school Mac
+  description: On a Sartell school MacBook, move installed applications into the Applications folder using this process.
+  links:
+    - label: How to do it
+      url: howtomoveitemstoapplications.html

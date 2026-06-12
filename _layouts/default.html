@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>{% if page.title %}{{ page.title }} — {% endif %}FRC 6045 Programming</title>
+<link rel="icon" type="image/x-icon" href="assets/images/Sabre_Robotics_Logo.png">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="{{ page.title | default: site.title }} — FRC Team 6045 Sabre Robotics programming documentation.">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<div class="announce">{{ site.data.settings.announcement }}</div>
+
+<header class="topnav">
+  <div class="topnav-inner">
+    <a class="brand" href="index.html">
+      <img src="assets/images/Sabre_Robotics_Logo.png" alt="Sabre Robotics logo">
+      <span><span class="team-num">6045</span> PROGRAMMING</span>
+    </a>
+    <nav>
+      <a href="index.html#setup">Setup</a>
+      <a href="index.html#guides">Guides</a>
+      <a href="index.html#autos">Autos</a>
+      <a href="index.html#problems">Problems</a>
+      <a href="index.html#repos">Repos</a>
+      <a href="contactform.html">Contact</a>
+      <a href="{{ site.data.settings.team_site }}" target="_blank" rel="noopener" style="border-left:1px solid rgba(255,255,255,0.25);">Team Site ↗</a>
+    </nav>
+  </div>
+</header>
+
+{{ content }}
+
+<footer>
+  <div class="footer-inner">
+    <span>FRC Team 6045 · Sabre Robotics · Sartell High School<br>
+    <a href="mailto:{{ site.data.settings.email }}">{{ site.data.settings.email }}</a> · <a href="{{ site.data.settings.team_site }}" target="_blank" rel="noopener">frc6045.com</a> · <a href="contactform.html">Contact form</a></span>
+    <span class="socials">
+      {% for s in site.data.settings.socials %}<a href="{{ s.url }}" target="_blank" rel="noopener">{{ s.label }}</a>{% endfor %}
+    </span>
+  </div>
+</footer>
+
+</body>
+</html>
